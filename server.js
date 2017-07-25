@@ -42,7 +42,7 @@
         {method: "GET", path: "/api/neighborhood/:id", description: "Show one neighborhood"},
         {method: "POST", path: "/api/neighborhood", description: "Create new neighborhood"},
         {method: "PUT", path: "/api/neighborhood/:id", description: "Update one neighborhood"},
-        {method: "DELETE", path: "/api/neighborhood/:id", description: "Destroy one neighborhood"},
+        // {method: "DELETE", path: "/api/neighborhood/:id", description: "Destroy one neighborhood"},
         {method: "GET", path: "/api/neighborhood/:id/restaurants", description: "Show a list of restaurants in a neighborhood"},
         {method: "PUT", path: "/api/neighborhood/:id/restaurants", description: "Update a neighborhood with a new restaurant"},
         // RESTAURANTS
@@ -124,6 +124,32 @@
 
   })
 
+  // {method: "GET", path: "/api/neighborhood/:id/restaurants", description: "Show a list of restaurants in a neighborhood"},
+  app.get('/api/neighborhood/:id/restaurants', function(req, res) {
+    db.Neighborhood.findById(req.params.id, function(err, foundNeighborhood){
+      console.log("Responding with restaurants", foundNeighborhood.restaurants);
+      res.json(foundNeighborhood.restaurants);
+    })
+  })
+
+  //create a new restaurant in the neighborhood
+
+  app.post('/api/neighborhood/:id/restaurants', function(req, res){
+    db.Neighborhood.findById(req.params.id, function(err, foundNeighborhood){
+      var newRestaurant = new db.Restaurant({
+        name: req.body.name,
+        url: req.body.url,
+        tips: []
+        // FIXME: find out how to put a tip into this array! 
+      })
+      console.log(req.body);
+      foundNeighborhood.restaurants.push(newRestaurant);
+      foundNeighborhood.save(function(err, savedNeighborhood){
+        console.log("new Restaurant created!!", newRestaurant);
+        res.json(newRestaurant);
+      })
+    })
+  })
 
 
 // NOTE: SERVER
