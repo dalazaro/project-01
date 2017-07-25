@@ -34,26 +34,29 @@
   // API DOCUMENTATION
   app.get('/api', function apiIndex(req, res) {
     res.json({
-      message: "Welcome to our Ramen API!",
+      message: "Welcome to SLURP SF, our crowdsourced ramen guide to San Francisco!",
       baseUrl: "https://young-lowlands-84241.herokuapp.com/",
       documentationUrl: "https://github.com/dalazaro/project-01",
       authors: [ "Stacy Suen", "Daryl Jason Lazaro" ],
       endpoints: [
         {method: "GET", path: "/api", description: "Describes all available endpoints"},
 
-        // RESTAURANTS
-        {method: "GET", path: "/api/restaurants", description: "Index of restaurants"},
-        {method: "GET", path: "/api/restaurants/:id", description: "Show one restaurant"},
-        {method: "POST", path: "/api/restaurants", description: "Create new restaurant"},
-        {method: "PUT", path: "/api/restaurants/:id", description: "Update one restaurant"},
-        {method: "DELETE", path: "/api/restaurants/:id", description: "Destroy one restaurant"},
-
         // NEIGHBORHOODS
         {method: "GET", path: "/api/neighborhoods", description: "Index of neighborhoods"},
         {method: "GET", path: "/api/neighborhoods/:id", description: "Show one neighborhood"},
         {method: "POST", path: "/api/neighborhoods", description: "Create new neighborhood"},
         {method: "PUT", path: "/api/neighborhoods/:id", description: "Update one neighborhood"},
-        {method: "DELETE", path: "/api/neighborhoods/:id", description: "Destroy one neighborhood"}
+        {method: "DELETE", path: "/api/neighborhoods/:id", description: "Destroy one neighborhood"},
+
+        {method: "GET", path: "/api/neighborhoods/:id/restaurants", description: "Show a list of restaurants in a neighborhood"},
+        {method: "PUT", path: "/api/neighborhoods/:id/restaurants", description: "Update a neighborhood with a new restaurant"},
+
+        // RESTAURANTS
+        {method: "GET", path: "/api/restaurants", description: "Index of restaurants"},
+        {method: "GET", path: "/api/restaurants/:id", description: "Show one restaurant"},
+        {method: "PUT", path: "/api/restaurants/:id/tips", description: "Update restaurant tips"},
+        {method: "DELETE", path: "/api/restaurants/:id", description: "Destroy one restaurant"}
+
       ]
     })
   });
