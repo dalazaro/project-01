@@ -1,42 +1,47 @@
-//Server-side JS
-
-var express = require('express');
-var app = express();
-var bodyParser = require("body-parser");
-
-//JSON API Endpoints
-
-
-//gets all restaurants
-app.get('/api/restaurants' function(req, res){
-  db.Place.find({})
-  .exec(function(err, places){
-    if (err) {
-      return console.log("index error: " + err);
-    }
-    res.json(places);
+// NOTE: CONFIG express and other modules
+  var express = require('express');
+  var app = express();
+  /* parse incoming urlencoded form data
+  and populate the req.body object */
+  var bodyParser = require('body-parser');
+  app.use(bodyParser.urlencoded({ extended: true }));
+// NOTE: DATA (hardcoded data can start out here if needed)
+  var db = require('./models');
+// NOTE: ROUTES
+  // serves static files from the 'public' directory
+  app.use(express.static('public'));
+// NOTE: HTML ENDPOINTS
+  app.get('/', function homepage(req, res) {
+    res.sendFile(__dirname + '/views/index.html');
   });
-})
-
-
-//get one restaurant
-app.get('/api/restaurants/:id', function (req, res){
-  var restaurantId = req.params.id
-  db.Restaurant.findById(restaurantId, function(err, foundRestaurant){
-    res.json(foundRestaurant);
+// TODO: JSON API ENDPOINTS
+  // API DOCUMENTATION
+  app.get('/api', function apiIndex(req, res) {
+    res.json({
+      message: "Welcome to SLURP SF, our crowdsourced ramen guide to San Francisco!",
+      baseUrl: "https://young-lowlands-84241.herokuapp.com/",
+      documentationUrl: "https://github.com/dalazaro/project-01",
+      authors: [ "Stacy Suen", "Daryl Jason Lazaro" ],
+      endpoints: [
+        {method: "GET", path: "/api", description: "Describes all available endpoints"},
+        // NEIGHBORHOODS
+        {method: "GET", path: "/api/neighborhoods", description: "Index of neighborhoods"},
+        {method: "GET", path: "/api/neighborhoods/:id", description: "Show one neighborhood"},
+        {method: "POST", path: "/api/neighborhoods", description: "Create new neighborhood"},
+        {method: "PUT", path: "/api/neighborhoods/:id", description: "Update one neighborhood"},
+        {method: "DELETE", path: "/api/neighborhoods/:id", description: "Destroy one neighborhood"},
+        {method: "GET", path: "/api/neighborhoods/:id/restaurants", description: "Show a list of restaurants in a neighborhood"},
+        {method: "PUT", path: "/api/neighborhoods/:id/restaurants", description: "Update a neighborhood with a new restaurant"},
+        // RESTAURANTS
+        {method: "GET", path: "/api/restaurants", description: "Index of restaurants"},
+        {method: "GET", path: "/api/restaurants/:id", description: "Show one restaurant"},
+        {method: "PUT", path: "/api/restaurants/:id/tips", description: "Update restaurant tips"},
+        {method: "DELETE", path: "/api/restaurants/:id", description: "Destroy one restaurant"}
+      ]
+    })
   });
-});
-
-
-// //create new Place -- WORKS
-// app.post('/api/places', function (req, res){
-//   var newPlace = new db.Place (req.body);
-//     newPlace.save(function (err, savedPlace){
-//       res.json(savedPlace);
-//     })
-// })
-
-
-app.listen(process.env.PORT || 3000, function () {
-  console.log('Express server is up and running on http://localhost:3000/');
-});
+// NOTE: SERVER
+// listen on the port Heroku prescribes (process.env.PORT) OR port 3000
+  app.listen(process.env.PORT || 3000, function(){
+    console.log('Express server is up and running on http://localhost:3000');
+  });
