@@ -29,7 +29,7 @@
 
 
 
-// NOTE: JSON API ENDPOINTS
+// TODO: JSON API ENDPOINTS
 
   // API DOCUMENTATION
   app.get('/api', function apiIndex(req, res) {
@@ -63,6 +63,6 @@
 // NOTE: SERVER
 // listen on the port Heroku prescribes (process.env.PORT) OR port 3000
 
-  app.listen(process.env.port || 3000, function(){
+  app.listen(process.env.PORT || 3000, function(){
     console.log('Express server is up and running on http://localhost:3000');
   });
