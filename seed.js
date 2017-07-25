@@ -1,6 +1,6 @@
 //This file will allow us to send our application with data
 
-var db = require("./models");
+var db = require('./models');
 
 var neighborhoodList = [];
 
@@ -16,7 +16,7 @@ neighborhoodList.push({
     {
       name: "The Ramen Bar",
       url: "http://theramenbar.com",
-      tips: ["Tokyo Roast Chicken Ramen w/ and egg!!"]
+      tips: ["Tokyo Roast Chicken Ramen w/ egg!!"]
     }
   ]
 });
@@ -56,13 +56,15 @@ neighborhoodList.push({
 });
 
 
-db.Neighborhood.remove({}, function(err, restaurant) {
-    db.Neighborhood.create(neighborhoodData, function(err, neighborhood) {
-        if (err) {
-          return console.log('ERROR', err);
-        }
-        console.log("all neighborhood: ", neighborhood);
-        console.log("created ", neighborhoodData.length, " neighborhood");
-        process.exit();
-    }); //closes create function
+db.Neighborhood.remove({}, function(err, neighborhood) {
+  console.log('removed all neighborhoods');
+  db.Neighborhood.create(neighborhoodList, function(err, neighborhood) {
+      if (err) {
+        console.log('ERROR', err);
+        return;
+      }
+      console.log("recreated ", neighborhood.length, " neighborhoods");
+      console.log("all neighborhoods: ", neighborhood);
+      process.exit();
+  }); //closes create function
 }); //closes remove function
