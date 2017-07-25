@@ -61,6 +61,69 @@
     })
   });
 
+  // GET /api/neighborhoods/:id
+  app.get('/api/neighborhood/:id', function(req, res) {
+
+    // get neighborhood id
+    var neighborhoodId = req.params.id;
+    console.log('show neighborhood', neighborhoodId);
+
+    db.Neighborhood.findById(neighborhoodId, function(err, neighborhood) {
+      if(err) {
+        console.log(err);
+      }
+      res.json(neighborhood);
+    })
+  });
+
+  // POST /api/neighborhood
+  app.post('/api/neighborhood', function(req, res) {
+    // console.log("TESTING THIS OUT");
+
+    // new neighborhood using form data (`req.body`)
+    var newNeighborhood = new db.Neighborhood({
+    name: req.body.name,
+    wikiUrl: req.body.wikiUrl,
+    restaurants: []
+    });
+
+    // save neighborhood to DB
+    newNeighborhood.save(function(err, neighborhood) {
+      if (err) {
+        console.log(err);
+      }
+      console.log('created neighborhood', neighborhood);
+      res.json(neighborhood);
+    })
+  })
+
+  // PUT /api/neighborhood/:id
+  app.put('/api/neighborhood/:id', function(req, res) {
+
+    // get neighborhood id
+    var neighborhoodId = req.params.id;
+    console.log('show neighborhood', neighborhoodId);
+
+    // find neighborhood
+    db.Neighborhood.findById(neighborhoodId, function(err, neighborhood) {
+      if (err) {
+        return console.log("create error: " + err);
+      }
+      neighborhood.name = req.body.name;
+      neighborhood.wikiUrl = req.body.wikiUrl;
+      neighborhood.restaurants = req.body.restaurants;
+      console.log('updated neighborhood', req.body);
+
+      neighborhood.save(function(err) {
+        if (err) {
+          return console.log("create error: " + err);
+        }
+        res.json({ message: 'Neighborhood updated!' });
+      })
+    })
+
+  })
+
 
 
 // NOTE: SERVER
