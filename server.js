@@ -7,9 +7,13 @@
   var bodyParser = require('body-parser');
   app.use(bodyParser.urlencoded({ extended: true }));
 
+
+
 // NOTE: DATA (hardcoded data can start out here if needed)
 
   var db = require('./models');
+
+
 
 // NOTE: ROUTES
 
@@ -19,9 +23,10 @@
 
 
 // NOTE: HTML ENDPOINTS
-app.get('/', function homepage(req, res) {
-  res.sendFile(__dirname + '/views/index.html');
-});
+  app.get('/', function homepage(req, res) {
+    res.sendFile(__dirname + '/views/index.html');
+  });
+
 
 
 // NOTE: JSON API ENDPOINTS
@@ -30,8 +35,9 @@ app.get('/', function homepage(req, res) {
   app.get('/api', function apiIndex(req, res) {
     res.json({
       message: "Welcome to our Ramen API!",
-      documentationUrl: "https://github.com/dalazaro/project-01",
       baseUrl: "https://young-lowlands-84241.herokuapp.com/",
+      documentationUrl: "https://github.com/dalazaro/project-01",
+      authors: [ "Stacy Suen", "Daryl Jason Lazaro" ],
       endpoints: [
         {method: "GET", path: "/api", description: "Describes all available endpoints"},
 
