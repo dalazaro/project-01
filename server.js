@@ -1,5 +1,5 @@
 // NOTE: CONFIG express and other modules
-  var express = require('express'),
+  var express = require('express');
   var app = express();
 
   /* parse incoming urlencoded form data
@@ -19,7 +19,9 @@
 
 
 // NOTE: HTML ENDPOINTS
-
+app.get('/', function homepage(req, res) {
+  res.sendFile(__dirname + '/views/index.html');
+});
 
 
 // NOTE: JSON API ENDPOINTS
