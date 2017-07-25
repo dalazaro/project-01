@@ -61,6 +61,27 @@
     })
   });
 
+  // POST api/neighborhood
+  app.post('/api/neighborhood', function(req, res) {
+    // console.log("TESTING THIS OUT");
+
+    // new neighborhood using form data (`req.body`)
+    var newNeighborhood = new db.Neighborhood({
+    name: req.body.name,
+    wikiUrl: req.body.wikiUrl,
+    restaurants: []
+    });
+
+    // save neighborhood to DB
+    newNeighborhood.save(function(err, neighborhood) {
+      if (err) {
+        console.log(err);
+      }
+      console.log('created neighborhood', neighborhood);
+      res.json(neighborhood);
+    })
+  })
+
 
 
 // NOTE: SERVER
