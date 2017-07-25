@@ -16,7 +16,7 @@ neighborhoodList.push({
     {
       name: "The Ramen Bar",
       url: "http://theramenbar.com",
-      tips: ["Tokyo Roast Chicken Ramen w/ and egg!!"]
+      tips: ["Tokyo Roast Chicken Ramen w/ egg!!"]
     }
   ]
 });
