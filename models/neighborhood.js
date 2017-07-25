@@ -1,12 +1,14 @@
-var mongoose = require("mongoose");
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var NeighborhoodSchema = new Schema ({
+var Restaurant = require('./restaurant');
+
+var NeighborhoodSchema = new Schema({
   name: String,
   wikiUrl: String,
   restaurants: [Restaurant.schema]
 });
 
-var Neighborhood = mongoose.model("Neighborhood", NeighborhoodSchema);
+var Neighborhood = mongoose.model('Neighborhood', NeighborhoodSchema);
 
 module.exports = Neighborhood;
