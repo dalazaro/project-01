@@ -54,6 +54,9 @@
     })
   });
 
+
+//*****NEIGHBORHOODS*******//
+
   // GET /api/neighborhoods
   app.get('/api/neighborhood', function(req, res) {
     db.Neighborhood.find({}, function(err, allNeighborhoods) {
@@ -124,7 +127,9 @@
 
   })
 
-  // {method: "GET", path: "/api/neighborhood/:id/restaurants", description: "Show a list of restaurants in a neighborhood"},
+//****RESTAURANTS*****//
+
+  //Show a list of restaurants in a neighborhood
   app.get('/api/neighborhood/:id/restaurants', function(req, res) {
     db.Neighborhood.findById(req.params.id, function(err, foundNeighborhood){
       console.log("Responding with restaurants", foundNeighborhood.restaurants);
@@ -133,15 +138,14 @@
   })
 
   //create a new restaurant in the neighborhood
-
   app.post('/api/neighborhood/:id/restaurants', function(req, res){
     db.Neighborhood.findById(req.params.id, function(err, foundNeighborhood){
       var newRestaurant = new db.Restaurant({
         name: req.body.name,
         url: req.body.url,
-        tips: []
-        // FIXME: find out how to put a tip into this array! 
+        tips: [req.body.tips]
       })
+      // FIXME: be able to add to the tips array
       console.log(req.body);
       foundNeighborhood.restaurants.push(newRestaurant);
       foundNeighborhood.save(function(err, savedNeighborhood){
@@ -150,6 +154,30 @@
       })
     })
   })
+
+
+// get restaurant by id
+  // app.get('/api/neighborhood/:neighborhood_id/restaurants/:id', function(req, res){
+  //   var restaurantId = req.params.id;
+  //   console.log(restaurantId);
+  //   db.Neighborhood.find(restaurantId, function(err, foundRestaurant){
+  //     //loop through the restaurant array from neighborhood
+  //     for (var i = 0; i < restaurant.lengh; i++){
+  //       if (restaurantId === restaurant[i].)
+  //     }
+  //     if (err){
+  //       console.log(err);
+  //     }
+  //     console.log(foundRestaurant);
+  //     res.json(foundRestaurant);
+  //   })
+  // });
+
+
+  //add more tips to the tips array for each restaurant //post rather than put so we won't alter restaurant data
+  // app.post('/api/neighborhood/:id/restaurants/:id', function(req, res){
+  //
+  // })
 
 
 // NOTE: SERVER
