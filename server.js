@@ -43,11 +43,15 @@
         {method: "POST", path: "/api/neighborhood", description: "Create new neighborhood"},
         {method: "PUT", path: "/api/neighborhood/:id", description: "Update one id-specified neighborhood"},
         // {method: "DELETE", path: "/api/neighborhood/:id", description: "Destroy one neighborhood"},
-        {method: "GET", path: "/api/neighborhood/:id/restaurants", description: "Show a list of restaurants in an id-specified neighborhood"},
-        {method: "POST", path: "/api/neighborhood/:id/restaurants", description: "Create a new restaurant within an id-specified neighborhood"},
+
         // RESTAURANTS
-        {method: "POST", path: "/api/restaurant/:id/tips", description: "Create a new tip in an id-specified restaurant"},
-        {method: "DELETE", path: "/api/restaurant/:id", description: "Destroy one restaurant"}
+        {method: "GET", path: "/api/neighborhood/:id/restaurants", description: "Show a list of restaurants in an id-specified neighborhood"},
+        {method: "GET", path: "/api/neighborhood/:neighborhood_id/restaurants/:restaurant_id", description: "Show one id-specified restaurant"},
+        {method: "POST", path: "/api/neighborhood/:id/restaurants", description: "Create a new restaurant within an id-specified neighborhood"},
+        {method: "DELETE", path: "/api/neighborhood/:neighborhood_id/restaurants/:restaurant_id", description: "Destroy one id-specified restaurant in an id-specified neighborhood"},
+
+        // TIPS
+        {method: "POST", path: "/api/neighborhood/:neighborhood_id/restaurant/:restaurant_id/tips", description: "Create a new tip in an id-specified restaurant"}
       ]
     })
   });
@@ -153,10 +157,40 @@
     })
   })
 
-  // INDEX all restaurants, independent of neighborhood
-  app.get('/api/restaurant', function (req, res) {
+  // DELETE one id-specified restaurant in an id-specified neighborhood
+  app.delete('/api/neighborhood/:neighborhood_id/restaurants/:restaurant_id', function(req, res) {
+    db.Neighborhood.findById(req.params.neighborhood_id, function(err, foundNeighborhood) {
+      console.log(foundNeighborhood);
+      var correctRestaurant = foundNeighborhood.restaurants.id(req.params.restaurant_id);
+      if (correctRestaurant) {
+        correctRestaurant.remove();
+        foundNeighborhood.save(function(err, saved) {
+          console.log('REMOVED ', correctRestaurant.name, 'FROM ', saved.restaurants);
+          res.json({ message: 'Restaurant deleted!' });
+        });
+      } else {
+        return console.log(err);
+      }
+    })
+  });
 
-  })
+  // Create more tips to the tips array for each restaurant //post rather than put so we won't alter restaurant data
+  // app.post('/api/neighborhood/:neighborhood_id/restaurant/:restaurant_id/tips', function(req, res){
+  //   db.Neighborhood.findById(req.params.id, function(err, foundNeighborhood){
+  //     var newRestaurant = new db.Restaurant({
+  //       name: req.body.name,
+  //       url: req.body.url,
+  //       tips: [req.body.tips]
+  //     })
+  //     // FIXME: be able to add to the tips array
+  //     console.log(req.body);
+  //     foundNeighborhood.restaurants.push(newRestaurant);
+  //     foundNeighborhood.save(function(err, savedNeighborhood){
+  //       console.log("new Restaurant created!!", newRestaurant);
+  //       res.json(newRestaurant);
+  //     })
+  //   })
+  // });
 
 
 // get restaurant by id
@@ -175,12 +209,6 @@
   //     res.json(foundRestaurant);
   //   })
   // });
-
-
-  //add more tips to the tips array for each restaurant //post rather than put so we won't alter restaurant data
-  // app.post('/api/neighborhood/:id/restaurants/:id', function(req, res){
-  //
-  // })
 
 
 // NOTE: SERVER
