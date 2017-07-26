@@ -12,6 +12,9 @@
 // NOTE: DATA (hardcoded data can start out here if needed)
   var db = require('./models');
 
+  // NOTE: Aquire data from seed.js
+  // var seed = require('seed.js')
+
 
 
 // NOTE: ROUTES
@@ -81,7 +84,7 @@
     })
   });
 
-  // POST /api/neighborhood
+  // POST /api/neighborhood //created neighborhood
   app.post('/api/neighborhood', function(req, res) {
     // console.log("TESTING THIS OUT");
 
@@ -157,6 +160,7 @@
     })
   })
 
+
   // DELETE one id-specified restaurant in an id-specified neighborhood
   app.delete('/api/neighborhood/:neighborhood_id/restaurants/:restaurant_id', function(req, res) {
     db.Neighborhood.findById(req.params.neighborhood_id, function(err, foundNeighborhood) {
@@ -174,41 +178,20 @@
     })
   });
 
-  // Create more tips to the tips array for each restaurant //post rather than put so we won't alter restaurant data
-  // app.post('/api/neighborhood/:neighborhood_id/restaurant/:restaurant_id/tips', function(req, res){
-  //   db.Neighborhood.findById(req.params.id, function(err, foundNeighborhood){
-  //     var newRestaurant = new db.Restaurant({
-  //       name: req.body.name,
-  //       url: req.body.url,
-  //       tips: [req.body.tips]
-  //     })
-  //     // FIXME: be able to add to the tips array
-  //     console.log(req.body);
-  //     foundNeighborhood.restaurants.push(newRestaurant);
-  //     foundNeighborhood.save(function(err, savedNeighborhood){
-  //       console.log("new Restaurant created!!", newRestaurant);
-  //       res.json(newRestaurant);
-  //     })
-  //   })
-  // });
-
 
 // get restaurant by id
-  // app.get('/api/neighborhood/:neighborhood_id/restaurants/:id', function(req, res){
-  //   var restaurantId = req.params.id;
-  //   console.log(restaurantId);
-  //   db.Neighborhood.find(restaurantId, function(err, foundRestaurant){
-  //     //loop through the restaurant array from neighborhood
-  //     for (var i = 0; i < restaurant.lengh; i++){
-  //       if (restaurantId === restaurant[i].)
-  //     }
-  //     if (err){
-  //       console.log(err);
-  //     }
-  //     console.log(foundRestaurant);
-  //     res.json(foundRestaurant);
-  //   })
-  // });
+  app.get('/api/neighborhood/:neighborhood_id/restaurants/:restaurant_id', function(req, res){
+    db.Neighborhood.findById(req.params.neighborhood_id, function(err, foundNeighborhood){
+      console.log(foundNeighborhood);
+      var restaurantId = foundNeighborhood.restaurants.id(req.params.restaurant_id);
+      if (restaurantId){
+        res.json(restaurantId)
+      }
+      else{
+        console.log("OH NO!");
+      }
+    })
+  });
 
 
 // NOTE: SERVER
