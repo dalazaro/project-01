@@ -32,7 +32,7 @@
   app.get('/api', function apiIndex(req, res) {
     res.json({
       message: "Welcome to SLURP SF, our crowdsourced ramen guide to San Francisco!",
-      baseUrl: "",
+      baseUrl: "https://floating-reef-39049.herokuapp.com",
       documentationUrl: "https://github.com/dalazaro/project-01",
       authors: [ "Stacy Suen", "Daryl Jason Lazaro" ],
       endpoints: [
