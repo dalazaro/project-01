@@ -140,7 +140,7 @@
         name: req.body.name,
         url: req.body.url,
         tips: []
-        // FIXME: find out how to put a tip into this array! 
+        // FIXME: find out how to put a tip into this array!
       })
       console.log(req.body);
       foundNeighborhood.restaurants.push(newRestaurant);
@@ -153,6 +153,6 @@
 
 
 // NOTE: SERVER
-  app.listen(3000, function(){
+  app.listen(process.env.PORT || 3000, function(){
     console.log('Express server is up and running on http://localhost:3000');
   });
