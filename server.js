@@ -38,17 +38,15 @@
       endpoints: [
         {method: "GET", path: "/api", description: "Describes all available endpoints"},
         // NEIGHBORHOODS
-        {method: "GET", path: "/api/neighborhood", description: "Index of neighborhoods"},
-        {method: "GET", path: "/api/neighborhood/:id", description: "Show one neighborhood"},
+        {method: "GET", path: "/api/neighborhood", description: "Index of all neighborhoods"},
+        {method: "GET", path: "/api/neighborhood/:id", description: "Show one id-specified neighborhood"},
         {method: "POST", path: "/api/neighborhood", description: "Create new neighborhood"},
-        {method: "PUT", path: "/api/neighborhood/:id", description: "Update one neighborhood"},
+        {method: "PUT", path: "/api/neighborhood/:id", description: "Update one id-specified neighborhood"},
         // {method: "DELETE", path: "/api/neighborhood/:id", description: "Destroy one neighborhood"},
-        {method: "GET", path: "/api/neighborhood/:id/restaurants", description: "Show a list of restaurants in a neighborhood"},
-        {method: "PUT", path: "/api/neighborhood/:id/restaurants", description: "Update a neighborhood with a new restaurant"},
+        {method: "GET", path: "/api/neighborhood/:id/restaurants", description: "Show a list of restaurants in an id-specified neighborhood"},
+        {method: "POST", path: "/api/neighborhood/:id/restaurants", description: "Create a new restaurant within an id-specified neighborhood"},
         // RESTAURANTS
-        {method: "GET", path: "/api/restaurant", description: "Index of restaurants"},
-        {method: "GET", path: "/api/restaurant/:id", description: "Show one restaurant"},
-        {method: "PUT", path: "/api/restaurant/:id/tips", description: "Update restaurant tips"},
+        {method: "POST", path: "/api/restaurant/:id/tips", description: "Create a new tip in an id-specified restaurant"},
         {method: "DELETE", path: "/api/restaurant/:id", description: "Destroy one restaurant"}
       ]
     })
@@ -153,6 +151,11 @@
         res.json(newRestaurant);
       })
     })
+  })
+
+  // INDEX all restaurants, independent of neighborhood
+  app.get('/api/restaurant', function (req, res) {
+
   })
 
 
