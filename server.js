@@ -51,6 +51,7 @@
         {method: "GET", path: "/api/neighborhood/:id/restaurants", description: "Show a list of restaurants in an id-specified neighborhood"},
         {method: "GET", path: "/api/neighborhood/:neighborhood_id/restaurants/:restaurant_id", description: "Show one id-specified restaurant"},
         {method: "POST", path: "/api/neighborhood/:id/restaurants", description: "Create a new restaurant within an id-specified neighborhood"},
+        // TODO: PUT: Update a restaurant
         {method: "DELETE", path: "/api/neighborhood/:neighborhood_id/restaurants/:restaurant_id", description: "Destroy one id-specified restaurant in an id-specified neighborhood"},
 
         // TIPS
@@ -155,6 +156,7 @@
     })
   });
 
+
   // Create a new restaurant within an id-specified neighborhood
   app.post('/api/neighborhood/:id/restaurants', function(req, res){
     db.Neighborhood.findById(req.params.id, function(err, foundNeighborhood){
@@ -162,6 +164,8 @@
         name: req.body.name,
         url: req.body.url,
         tips: [req.body.tips]
+        // FIXME: if tips field is left empty when creating a new restaurant, index[0] is assigned as 'null'
+        //alternatively, make this field required
       })
       console.log(req.body);
       foundNeighborhood.restaurants.push(newRestaurant);
