@@ -45,7 +45,7 @@
         {method: "GET", path: "/api/neighborhood/:id", description: "Show one id-specified neighborhood"},
         {method: "POST", path: "/api/neighborhood", description: "Create new neighborhood"},
         {method: "PUT", path: "/api/neighborhood/:id", description: "Update one id-specified neighborhood"},
-        // {method: "DELETE", path: "/api/neighborhood/:id", description: "Destroy one neighborhood"},
+        {method: "DELETE", path: "/api/neighborhood/:id", description: "Destroy one neighborhood"},
 
         // RESTAURANTS
         {method: "GET", path: "/api/neighborhood/:id/restaurants", description: "Show a list of restaurants in an id-specified neighborhood"},
@@ -131,6 +131,21 @@
     })
 
   })
+
+  // delete id-specified neighborhood
+  app.delete('/api/neighborhood/:id', function(req, res) {
+
+  // destroy method
+  db.Neighborhood.findOneAndRemove({_id: req.params.id}, function(err) {
+    if (err) {
+      res.status(500);
+      console.log("index error: " + err);
+    }
+    res.json({ message: 'Neighborhood deleted!' });
+  });
+
+});
+
 
 //****RESTAURANTS*****//
 
