@@ -41,35 +41,25 @@ $(document).ready(function(){
           </div>`
         );
       });
+      $('.add-restaurant').on('click', handleAddRestaurant);
     }
   });
 });
 
 
+function handleAddRestaurant(e){
+  console.log("add-restaurant clicked!");
+  var currentNeighborhoodId = $(this).closest('.neighborhood').data('neighborhood_id');
+  console.log(('THIS IS THE CURRENT NEIGHTBORHOODID!!', currentNeighborhoodId));
+  $('#restaurantModal').data('neighborhood_id', currentNeighborhoodId);
+  $('#restaurantModal').modal();
+}
 
-//
-//
-//   console.log("app.js is loaded!");
-//
-//
-// // TODO: CALLBACK FUNCTIONS
-//
+
 // $('#restaurants').on('click', '.district-name', handleNavigationClick);
-// $('.add-restaurant').on('click', handleAddRestaurant);
-//
-//
-//
-//
-//
-//
-// //when neighborhood is clicked from drop down menu
+
+
+//when neighborhood is clicked from drop down menu
 // function handleNavigationClick(e){
 //
-// }
-//
-// function handleAddRestaurant(e){
-//   console.log("add-restaurant clicked!");
-//   var currentNeighborhoodId = $(this).closest('.neighborhood').data('neighborhood_id');
-//   console.log(('ID', currentNeighborhoodId));
-//   $()
 // }
