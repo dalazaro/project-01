@@ -29,13 +29,13 @@
   <body>
     <header class="main-title">
         <h1>Slurp SF</h1>
-        <h2>Your crowdsourced ramen guide to San Francisco</h2>
+        <h2>Your crowdsourced RAMEN guide to San Francisco</h2>
     </header>
 
 
     <main>
       <nav class="nav dropdown col-sm-3">
-        <b>Select Neighborhood</b>
+        <span id="select-neighborhood">Select Neighborhood:</span>
         <select id="restaurants">
           <option value="financial-district">Financial District</option>
           <option value="sunset">Sunset</option>
@@ -48,7 +48,6 @@
       </nav>
 
       <div class="main-body col-sm-9">
-        <!-- FIXME: why are these divs entirely indpendent of the container? -->
         <section class="neighborhood">
 
           <div class="neighborhood-title" id="financial-district">
