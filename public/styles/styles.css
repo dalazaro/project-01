@@ -1,24 +1,143 @@
+/** {
+  border: 1px solid black;
+}*/
+
 body {
     background-image: url('/images/ramen-pic.jpg');
-    background-size: 100%;
+    background-size: cover;
+    background-position: center;
     background-attachment: fixed;
-    color: #EEE;
+    color: black;
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
 }
 
 .main-title {
   text-align: center;
   font-family: 'Oswald', sans-serif;
   font-size: 30px;
+  margin: 0;
+  padding: 20px 0;
+  background-color: white;
+  opacity: 0.8;
 }
 
-h1 {
+header h1 {
   font-family: 'Oswald', sans-serif;
-  font-size: 70px ;
+  font-size: 70px;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  margin: auto;
+  text-transform: uppercase;
 }
 
-.container {
-  background-color: transparent;
+header h2 {
+  margin: auto;
+  padding: 10px;
+  letter-spacing: 0.05em;
 }
-a {
-  color: pink;
+
+main {
+  display: inline-block;
+  width: 100%;
+  margin: 10px auto;
+}
+
+.nav {
+  height: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: center;
+  background-color: white;
+  opacity: 0.8;
+}
+
+#select-neighborhood {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px auto;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+select#restaurants {
+  margin: 0 10px;
+}
+
+.dropbtn {
+  margin: 5px auto;
+}
+
+.main-body {
+  height: 100%;
+  padding: 0;
+  margin: 10px 0;
+}
+
+section.neighborhood {
+  padding: 20px 30px;
+  background-color: white;
+  opacity: 0.9;
+}
+
+.neighborhood-title h2 {
+  margin: 0 0 15px 0;
+  padding: 0;
+  letter-spacing: 0.05em;
+}
+
+button.add-restaurant {
+  margin-bottom: 5px;
+}
+
+.add-restaurant {
+  padding: 0;
+}
+
+.restaurant-img-div {
+  padding: 0;
+}
+
+.restaurant-img {
+  height: auto;
+  width: 100%;
+}
+
+.restaurant-info {
+  padding: 0;
+}
+
+.restaurant-info h4 {
+  margin: 10px 0 10px 0;
+}
+
+div.restaurant-tips li {
+  padding-left: 5px;
+}
+
+button.add-tip {
+  padding: 0 5px;
+  margin: 5px 0;
+}
+
+footer {
+  background-color: white;
+  opacity: 0.8;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: inline-block;
+  font-size: 12px;
+}
+
+footer h6 {
+  text-transform: uppercase;
 }

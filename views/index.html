@@ -27,61 +27,47 @@
   </head>
 
   <body>
-      <div class="container">
-        <div class="row main-title">
-          <h1>SLURP SF</h1>
-          <p>Your crowdsourced ramen guide to San Francisco</p>
-        </div>
-      </div>
 
-<!-- Side Navigation  -->
-      <div class="container-fluid">
-        <div class="row row-offcanvas row-offcanvas-left">
-          <div class="col-xs-2 sidebar-offcanvas" id="sidebar" role="navigation">
-            <div class="sidebar-nav">
-              <ul class="nav">
-                <li class="active"><a href="#top">Top</a></li>
-                <li><a href="financial-district">Financial District</a></li>
-                <li><a href="footer">Footer</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div id="content">
-        <section id="top">
-        </section>
-
-        <section id="financial-district">
-        </section>
-
-        <section id="footer">
-        </section>
-
-      </div>
-
-      <div class="container">
-        <footer>
-           <a href=" ">About</a>
-           <a href="https://www.kirimachi.com">Contact<img class="contact"/></a>
-
-
-        </footer>
-      </div>
-
-
-
+    <header class="main-title">
+        <h1>Slurp SF</h1>
+        <h2>Your crowdsourced RAMEN guide to San Francisco</h2>
+    </header>
 
 
     <main>
+      <nav class="nav dropdown col-sm-3">
+        <span id="select-neighborhood">Select Neighborhood:</span>
+        <select id="restaurants">
+          <option value="financial-district">Financial District</option>
+          <option value="sunset">Sunset</option>
+          <option value="richmond">Richmond</option>
+        </select>
+        <ul>
+          <li><a href="#about">About<a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="main-body col-sm-9">
+        <section class="neighborhood">
+
+
+        </section>
+      </div>
+
     </main>
 
-    <aside class="">
-    </aside>
 
+    <footer>
+      <div class="footer-div col-md-6" id="about">
+        <h6>About</h6>
+        <p>This app was developed by Stacy Suen & Daryl Lazaro from GA WDI 39.</p>
+      </div>
 
+       <div class="footer-div col-md-6" id="contact">
+         <h6>Contact</h6>
+       </div>
+    </footer>
 
   </body>
 
