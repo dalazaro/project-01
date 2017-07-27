@@ -27,64 +27,66 @@
   </head>
 
   <body>
-      <div class="container">
-        <div class="row main-title">
-          <h1>SLURP SF</h1>
-          <p>Your crowdsourced ramen guide to San Francisco</p>
-        </div>
-      </div>
-
-      <div class="container-fluid">
-        <div class="row row-offcanvas row-offcanvas-left">
-          <div class="col-xs-2 sidebar-offcanvas" id="sidebar" role="navigation">
-            <div class="sidebar-nav">
-              <ul class="nav">
-                <li class="active"><a href="#top">Top</a></li>
-                <li><a href="financial-district">Financial District</a></li>
-                <li><a href="footer">Footer</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    
-
-              <div id="content">
-                <section id="top">
-                </section>
-
-                <section id="financial-district">
-                </section>
-
-                <section id="footer">
-                </section>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <footer>
-           <a href=" ">About</a>
-           <a href="https://www.kirimachi.com">Contact<img class="contact"/></a>
-
-
-        </footer>
-      </div>
-
-
-
+    <header class="main-title">
+        <h1>Slurp SF</h1>
+        <h2>Your crowdsourced ramen guide to San Francisco</h2>
+    </header>
 
 
     <main>
+      <nav class="nav dropdown col-sm-3">
+        <b>Select Neighborhood</b>
+        <select id="restaurants">
+          <option value="financial-district">Financial District</option>
+          <option value="sunset">Sunset</option>
+          <option value="richmond">Richmond</option>
+        </select>
+        <ul>
+          <li><a href="#about">About<a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="main-body col-sm-9">
+        <!-- FIXME: why are these divs entirely indpendent of the container? -->
+        <section class="neighborhood">
+
+          <div class="neighborhood-title" id="financial-district">
+            <h2 class="col-sm-9">Financial District</h2>
+            <button type="button" class="add-restaurant col-sm-3" name="">Add Restaurant</button>
+          </div>
+          <div class="restaurants">
+            <div class="restaurant-img-div">
+              <img class="restaurant-img" src="/images/embarcadero-fidi.jpg" alt="SF">
+            </div>
+            <div class="restaurant-info">
+              <h4>Kirimachi Ramen</h4>
+              <a href="http://kirimachiramen.com">http://kirimachiramen.com</a>
+              <div class="restaurant-tips">
+                <h5><b>Tips:</b></h5>
+                <li>"Love the Tsukemen Ramen!"</li>
+                <li>"Try the Duck one!"</li>
+                <button type="button" class="add-tip" name="">Add Tip</button>
+              </div>
+            </div>
+          </div>
+
+        </section>
+      </div>
+
     </main>
 
-    <aside class="">
-    </aside>
 
+    <footer>
+      <div class="footer-div col-md-6" id="about">
+        <h6>About</h6>
+        <p>This app was developed by Stacy Suen & Daryl Lazaro from GA WDI 39.</p>
+      </div>
 
+       <div class="footer-div col-md-6" id="contact">
+         <h6>Contact</h6>
+       </div>
+    </footer>
 
   </body>
 
