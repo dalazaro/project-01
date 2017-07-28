@@ -34,6 +34,8 @@ $(document).ready(function(){
               <div class="restaurant-tips">
               <h4><b>Recommended Slurps:</b></h5>
               <ul class="restaurant-tip-render">
+              <li>${json.restaurants[0].tips[0]}</li>
+              <li>${json.restaurants[0].tips[1]}</li>
               </ul>
               <button type="button" class="btn btn-warning add-tip" name="">Add Slurp for ${json.restaurants[0].name}</button>
               </div>
