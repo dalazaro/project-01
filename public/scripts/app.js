@@ -46,7 +46,7 @@ $(document).ready(function(){
 
       });
       $('.add-restaurant').on('click', handleAddRestaurant);
-    }
+      $('#saveRestaurant').on('click', handleNewRestaurantSubmit);    }
   });
 });
 
@@ -58,8 +58,41 @@ function handleAddRestaurant(e){
   $('#restaurantModal').modal();
 }
 
-// $('#restaurants').on('click', '.district-name', handleNavigationClick);
+// when the song modal submit button is clicked:
+function handleNewRestaurantSubmit(e) {
+  e.preventDefault();
+  var $modal = $('#restaurantModal');
+  var $restaurantNameField = $modal.find('#restaurantName');
+  var $restaurantUrl = $modal.find('#restaurant-web');
+  // get data from modal fields
+  var dataToPost = {
+    name: $restaurantNameField.val(),
+    restaurantUrl: $restaurantUrl.val()
+  };
 
+  var restaurantId = $modal.data('restaurantId');
+  console.log("RESTAURANT ID: ", restaurantId);
+  // POST to SERVER
+  var restaurantPostToServerUrl = '/api/neighborhood/:'+ restaurantId + '/restaurants';
+  // $.post(restaurantPostToServerUrl, dataToPost, function(data) {
+  //   console.log('received data from post to /restaurants:', data);
+  //   // clear form
+  //   $restaurantNameField.val('');
+  //   $restaurantUrl.val('');
+
+    // close modal
+    // $modal.modal('hide');
+    // update the correct album to show the new song
+    // $.get('/api/neighborhood/' + restaurantId, function(data) {
+    //   // remove the current instance of the album from the page
+    //   $('[data-restaurant-id=' + restaurantId + ']').remove();
+    //   // re-render it with the new album data (including songs)
+    //   renderRestaurant(data);
+    // });
+  // }).error(function(err) {
+    // console.log('post to /api/neighborhood/:neighborhoodId/restaurants resulted in error', err);
+}
+// $('#restaurants').on('click', '.district-name', handleNavigationClick);
 
 //when neighborhood is clicked from drop down menu
 // function handleNavigationClick(e){
