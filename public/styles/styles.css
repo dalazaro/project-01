@@ -3,33 +3,39 @@
 }*/
 
 body {
-    background-image: url('/images/ramen-pic.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: black;
-    width: 80%;
-    margin: 0 auto;
+  color: black;
+  width: 90%;
+  margin: 0 auto;
 }
 
 header {
+  color: #FFB63E;
+  background-image: url('/images/ramen-pic.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  height: 100%;
 }
 
 .main-title {
   text-align: center;
+  text-shadow:
+		-1.5px -1.5px 0 #000,
+		1.5px -1.5px 0 #000,
+		-1.5px 1.5px 0 #000,
+		1.5px 1.5px 0 #000;
   font-family: 'Oswald', sans-serif;
   font-size: 30px;
   margin: 0;
-  padding: 20px 0;
-  background-color: white;
-  opacity: 0.8;
+  padding: 20px 0 100px 0;
+  opacity: 0.9;
 }
 
 header h1 {
   font-family: 'Oswald', sans-serif;
   font-size: 70px;
   letter-spacing: 0.1em;
-  font-weight: 700;
+  font-weight: 900;
   margin: auto;
   text-transform: uppercase;
 }
@@ -37,6 +43,7 @@ header h1 {
 header h2 {
   margin: auto;
   padding: 10px;
+  font-weight: 700;
   letter-spacing: 0.05em;
 }
 
@@ -51,7 +58,6 @@ main {
   padding: 10px;
   margin: 10px 0;
   text-align: center;
-  background-color: white;
   opacity: 0.8;
 }
 
@@ -60,10 +66,22 @@ main {
   text-transform: uppercase;
 }
 
-nav ul {
-  list-style: none;
-  padding: 0;
+nav {
+  text-align: center;
+  font-size: 16px;
+  width: 100%;
+}
+
+.nav-neighborhoods {
   margin: 10px auto;
+}
+
+.nav-neighborhoods li {
+  text-align: center;
+  padding: 5px 10px;
+  display: inline;
+  list-style: none;
+  text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 0.05em;
 }
@@ -84,29 +102,33 @@ select#restaurants {
 
 section.neighborhood {
   padding: 20px 30px;
-  background-color: white;
   opacity: 0.9;
 }
 
+.neighborhood-box h3 {
+  margin: 10px 0;
+}
+
 .neighborhood-title h2 {
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
   margin: 0 0 15px 0;
   padding: 0;
   letter-spacing: 0.05em;
 }
 
-button.add-restaurant {
-  margin-bottom: 5px;
+.neighborhood-img-div {
+  padding: 0;
 }
 
 .add-restaurant {
-  padding: 0;
+  margin: auto;
+  margin: 5px 0;
+  color: #000000;
 }
 
-.restaurant-img-div {
-  padding: 0;
-}
-
-.restaurant-img {
+.neighborhood-img {
   height: auto;
   width: 100%;
 }
@@ -126,10 +148,10 @@ div.restaurant-tips li {
 button.add-tip {
   padding: 0 5px;
   margin: 5px 0;
+  color: #000000;
 }
 
 footer {
-  background-color: white;
   opacity: 0.8;
   margin: 0;
   padding: 0;
