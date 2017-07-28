@@ -68,11 +68,11 @@ main {
 nav {
   text-align: center;
   font-size: 16px;
-  width: 100%;
 }
 
 .nav-neighborhoods {
   margin: 10px auto;
+  width: 90%;
 }
 
 .nav-neighborhoods li {
