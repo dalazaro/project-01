@@ -55,7 +55,6 @@ neighborhoodList.push({
   ]
 });
 
-
 db.Neighborhood.remove({}, function(err, neighborhood) {
   console.log('removed all neighborhoods');
   db.Neighborhood.create(neighborhoodList, function(err, neighborhood) {
