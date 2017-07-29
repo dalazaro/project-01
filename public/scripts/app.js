@@ -70,7 +70,7 @@ $(document).ready(function(){
         $('.neighborhood').append(
           `<div class="neighborhood-box" id="${neighborhoodId}">
             <div class="neighborhood-title">
-              <h2>${name}</h2>
+              <h2 id="neighborhood-title">${name}</h2>
             </div>
             <div class="neighborhood-img-div">
               <a href="${wikiUrl}" target="blank"><img class="neighborhood-img" src="/images/embarcadero-fidi.jpg" alt="SF"></a>
@@ -137,6 +137,7 @@ function handleNewRestaurantSubmit(e) {
   var restaurantPostToServerUrl = '/api/neighborhood/'+ neighborhoodId + '/restaurants';
   $.post(restaurantPostToServerUrl, dataToPost, function(data) {
     console.log('received data from post to /restaurants:', data);
+    console.log("RESTAURTANTPOSTTOSERVERRRRRR", restaurantPostToServerUrl);
   //   // clear form
     // $restaurantNameField;
     // $restaurantUrl;
