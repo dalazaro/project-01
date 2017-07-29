@@ -119,7 +119,7 @@ function handleNewRestaurantSubmit(e) {
   var $modal = $('#restaurantModal');
   // console.log("RESTAURANT MODAL", $modal);
 
-  var $restaurantNameField = $modal.find('#restaurantName')[0].value;
+  var $restaurantNameField = $modal.find('#restaurantModal')[0].value;
   console.log("RESTAURANT NAME FIELD", $restaurantNameField);
   var $restaurantUrl = $modal.find('#restaurant-web')[0].value;
   console.log("RESTAURANT URL", $restaurantUrl);
