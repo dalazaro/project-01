@@ -4,8 +4,10 @@ body {
   margin: 0 auto;
   background-image: url('/images/slurpWood.jpg');
   background-size: cover;
+}
 
-
+.modal {
+  color: navy;
 }
 
 header {

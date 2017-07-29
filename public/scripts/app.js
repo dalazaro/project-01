@@ -99,68 +99,67 @@ $(document).ready(function(){
 
 
 
-function handleAddRestaurant(e){
-  console.log("add-restaurant clicked!");
-  var closestNei = $(this).closest('.neighborhood-box')[0];
-  var $neighEle = $(closestNei);
-  console.log("CLOSEST neighborhood", $neighEle.attr('id'));
-  var currentNeighborhoodId = $neighEle.attr('id');
+  function handleAddRestaurant(e){
+    console.log("add-restaurant clicked!");
+    var closestNei = $(this).closest('.neighborhood-box')[0];
+    var $neighEle = $(closestNei);
+    console.log("CLOSEST neighborhood", $neighEle.attr('id'));
+    var currentNeighborhoodId = $neighEle.attr('id');
 
-  console.log("THIS IS THE CURRENT NEIGHTBORHOODID!!", currentNeighborhoodId);
-  $('#restaurantModal').data('neighborhood_id', currentNeighborhoodId);
-  $('#restaurantModal').modal();
-}
+    console.log("THIS IS THE CURRENT NEIGHTBORHOODID!!", currentNeighborhoodId);
+    $('#restaurantModal').data('neighborhood_id', currentNeighborhoodId);
+    $('#restaurantModal').modal();
+  }
 
-// when the song modal submit button is clicked:
-function handleNewRestaurantSubmit(e) {
-  console.log("CLICKED");
-  e.preventDefault();
+  // when the song modal submit button is clicked:
+  function handleNewRestaurantSubmit(e) {
+    console.log("CLICKED");
+    e.preventDefault();
 
-  var $modal = $('#restaurantModal');
-  // console.log("RESTAURANT MODAL", $modal);
+    var $modal = $('#restaurantModal');
+    // console.log("RESTAURANT MODAL", $modal);
 
-  var $restaurantNameField = $modal.find('#restaurantModal')[0].value;
-  console.log("RESTAURANT NAME FIELD", $restaurantNameField);
-  var $restaurantUrl = $modal.find('#restaurant-web')[0].value;
-  console.log("RESTAURANT URL", $restaurantUrl);
-  // get data from modal fields
-  var dataToPost = {
-    name: $restaurantNameField,
-    restaurantUrl: $restaurantUrl
+    var $restaurantNameField = $modal.find('#restaurantName')[0].value;
+    console.log("RESTAURANT NAME FIELD", $restaurantNameField);
+    var $restaurantUrl = $modal.find('#restaurant-web')[0].value;
+    console.log("RESTAURANT URL", $restaurantUrl);
+    // get data from modal fields
+    var dataToPost = {
+      name: $restaurantNameField,
+      restaurantUrl: $restaurantUrl
+    };
+    console.log("NAME", name);
+
+    var neighborhoodId = $modal.data('neighborhood_id');
+    console.log("MODAL-DATA", $modal.data());
+
+    // POST to SERVER
+    var restaurantPostToServerUrl = '/api/neighborhood/'+ neighborhoodId + '/restaurants';
+    $.post(restaurantPostToServerUrl, dataToPost, function(data) {
+      console.log('received data from post to /restaurants:', data);
+    //   // clear form
+      // $restaurantNameField;
+      // $restaurantUrl;
+
+      // close modal
+      $modal.modal('hide');
+      $.get('api/neighborhood/' + neighborhoodId, function(data){
+          $('[id=' + neighborhoodId + ']').remove();
+          renderRestaurant(data); //data contains everything from the that neighborhood
+          $('.neighborhood').append('<li>' + dataToPost.name + '</li>');
+          $('.neighborhood').append('<li>' + dataToPost.restaurantUrl + '</li>')
+          console.log("DATA TO POST", dataToPost);
+      });
+
+        // fetchAndRenderNeighborhoodWithId(neighborhoodId);
+      });
+  //   }).error(function(err) {
+  //     console.log('post to /api/neighborhood/:neighborhoodId/restaurants resulted in error', err);
+  // });
+  // $('#restaurants').on('click', '.district-name', handleNavigationClick);
+
+  //when neighborhood is clicked from drop down menu
+  // function handleNavigationClick(e){
+  //
   };
-  console.log("NAME", name);
-
-  var neighborhoodId = $modal.data('neighborhood_id');
-  console.log("MODAL-DATA", $modal.data());
-  console.log("NEIGHBORHOOD ID: ", neighborhoodId);
-  // POST to SERVER
-  var restaurantPostToServerUrl = '/api/neighborhood/'+ neighborhoodId + '/restaurants';
-  $.post(restaurantPostToServerUrl, dataToPost, function(data) {
-    console.log('received data from post to /restaurants:', data);
-    console.log("RESTAURTANTPOSTTOSERVERRRRRR", restaurantPostToServerUrl);
-  //   // clear form
-    // $restaurantNameField;
-    // $restaurantUrl;
-
-    // close modal
-    $modal.modal('hide');
-    $.get('api/neighborhood/' + neighborhoodId, function(data){
-        $('[id=' + neighborhoodId + ']').remove();
-        renderRestaurant(data);
-    });
-
-    // update the correct album to show the new song
-
-      // fetchAndRenderNeighborhoodWithId(neighborhoodId);
-    });
-//   }).error(function(err) {
-//     console.log('post to /api/neighborhood/:neighborhoodId/restaurants resulted in error', err);
-// });
-// $('#restaurants').on('click', '.district-name', handleNavigationClick);
-
-//when neighborhood is clicked from drop down menu
-// function handleNavigationClick(e){
-//
-};
-
 });
