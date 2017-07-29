@@ -13,6 +13,14 @@ header {
   height: 100%;
 }
 
+.neighborhood-title {
+  color: #FFB63E;
+  background-image: url("/images/embarcadero-fidi.jpg");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-clip: padding-box;
+}
+
 .main-title {
   text-align: center;
   text-shadow:
