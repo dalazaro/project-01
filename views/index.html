@@ -1,111 +1,137 @@
-
 <!DOCTYPE html>
 <html>
 
-  <head>
+<head>
 
-    <meta charset="utf-8">
+  <meta charset="utf-8">
 
-    <!-- NOTE: BOOTSTRAP CSS CDN -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- NOTE: BOOTSTRAP CSS CDN -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- NOTE: CUSTOM STYLE SHEET -->
-    <link type="text/css" rel="stylesheet" href="/styles/styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+  <!-- NOTE: CUSTOM STYLE SHEET -->
+  <link type="text/css" rel="stylesheet" href="/styles/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
-    <!-- NOTE: JQUERY CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+  <!-- NOTE: JQUERY CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 
-    <!-- NOTE: BOOTSTRAP JS CDN -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- NOTE: BOOTSTRAP JS CDN -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <!-- NOTE: CUSTOM SCRIPTS -->
-    <script type="text/javascript" src="/scripts/app.js"></script>
+  <!-- NOTE: CUSTOM SCRIPTS -->
+  <script type="text/javascript" src="/scripts/app.js"></script>
 
-    <title>SLURP SF</title>
+  <title>SLURP SF</title>
 
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <header class="main-title">
-      <h1>Slurp SF</h1>
-      <h2>Your crowdsourced RAMEN guide to San Francisco</h2>
-    </header>
+  <header class="main-title">
+    <h1>Slurp SF</h1>
+    <h2>Your crowdsourced RAMEN guide to San Francisco</h2>
+  </header>
 
-    <nav class="nav-neighborhoods">
-    </nav>
+  <nav class="nav-neighborhoods">
+  </nav>
 
-    <hr>
+  <hr>
 
-    <main>
-      <div class="main-body">
-        <section class="neighborhood">
-        </section>
+  <main>
+    <div class="main-body">
+      <section class="neighborhood">
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-div" id="about">
+      <h6>About</h6>
+      <p>Slurp SF was developed by <a href="mailto:stacysuen5@gmail.com">Stacy Suen</a> & <a href="mailto:daryl.lazaro@gmail.com"> Daryl Lazaro</a> from General Assembly, San Francisco WDI 39.</p>
+    </div>
+  </footer>
+
+  <!-- begin songModal: this is not visible until you call .modal() on it -->
+  <div class="modal fade" tabindex="-1" role="dialog" id="restaurantModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Add Your Favorite Ramen Restaurant in this Neighborhood!</h4>
+        </div>
+
+        <div class="modal-body">
+
+          <fieldset class='form-horizontal'>
+            <!-- Restaurant input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="restaurantName">Restaurant Name</label>
+              <div class="col-md-4">
+                <input id="restaurantName" name="restaurantName" type="text" placeholder="" class="form-control input-md" required="">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label">Restaurant Website</label>
+              <div class="col-md-4">
+                <input id="restaurant-web" name="restaurant-web" type="string" placeholder="" class="form-control input-md">
+              </div>
+            </div>
+
+          </fieldset>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="saveRestaurant">Submit!</button>
+        </div>
+
+
       </div>
-    </main>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
 
-    <footer>
-      <div class="footer-div" id="about">
-        <h6>About</h6>
-        <p>Slurp SF was developed by <a href="mailto:stacysuen5@gmail.com">Stacy Suen</a> & <a href="mailto:daryl.lazaro@gmail.com"> Daryl Lazaro</a> from General Assembly, San Francisco WDI 39.</p>      </div>
-    </footer>
 
-<!-- begin songModal: this is not visible until you call .modal() on it -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="restaurantModal">
-      <div class="modal-dialog">
-        <div class="modal-content">
+  <!-- MODEL FOR ADDING SLURPS -->
 
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Add Your Favorite Ramen Restaurant in this Neighborhood!</h4>
-          </div>
 
-          <div class="modal-body">
+  <div class="modal fade" tabindex="-1" role="dialog" id="slurpModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
 
-            <fieldset class='form-horizontal'>
-              <!-- Restaurant input-->
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="restaurantName">Restaurant Name</label>
-                <div class="col-md-4">
-                  <input id="restaurantName" name="restaurantName" type="text" placeholder="" class="form-control input-md" required="">
-                </div>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Add a Slurp!</h4>
+        </div>
+
+        <div class="modal-body">
+
+          <fieldset class='form-horizontal'>
+            <!-- Slurp input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="slurp">Enter a Slurp Here</label>
+              <div class="col-md-4">
+                <input id="slurpId" name="slurpName" type="text" placeholder="" class="form-control input-md" required="">
               </div>
+            </div>
 
-              <div class="form-group">
-                <label class="col-md-4 control-label">Restaurant Website</label>
-                <div class="col-md-4">
-                  <input id="restaurant-web" name="restaurant-web" type="string" placeholder="" class="form-control input-md">
-                </div>
-              </div>
+          </fieldset>
 
-              <!-- <div class="form-group">
-                <label class="col-md-4 control-label">SLURPS!</label>
-                <div class="col-md-4">
-                  <input id="restaurant-slurp" name="restaurant-slurp" type="string" placeholder="" class="form-control input-md">
-                </div>
-              </div> -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="saveSlurp">Submit!</button>
+        </div
 
-            </fieldset>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="saveRestaurant">Submit!</button>
-          </div>
-
-
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-
-            </fieldset>
-
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
 
 
 
@@ -113,6 +139,6 @@
 
 
 
-  </body>
+</body>
 
 </html>
