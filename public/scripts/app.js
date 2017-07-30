@@ -50,6 +50,7 @@ $(document).ready(function(){
       });
       $('.add-restaurant').on('click', handleAddRestaurant);
       $('#saveRestaurant').on('click', handleNewRestaurantSubmit);
+      $('.add-tip').on('click', handleAddTip);
     }
   // });
 
@@ -62,10 +63,6 @@ $(document).ready(function(){
         var wikiUrl = json.wikiUrl;
         var restaurants = json.restaurants;
         var neighborhoodId = json._id;
-
-        $('.nav-neighborhoods').append(
-          `<li><a href="#${neighborhoodId}">${name}</a></li>`
-        )
 
         $('.neighborhood').append(
           `<div class="neighborhood-box" id="${neighborhoodId}">
@@ -94,13 +91,14 @@ $(document).ready(function(){
 
       $('.add-restaurant').on('click', handleAddRestaurant);
       $('#saveRestaurant').on('click', handleNewRestaurantSubmit);
+      // $('.add-tip').on('click', handleAddTip)
     }
   // });
 
 
 
   function handleAddRestaurant(e){
-    console.log("add-restaurant clicked!");
+    console.log("add-restaurant clicked!", $('.add-restaurant'));
     var closestNei = $(this).closest('.neighborhood-box')[0];
     var $neighEle = $(closestNei);
     console.log("CLOSEST neighborhood", $neighEle.attr('id'));
@@ -120,9 +118,10 @@ $(document).ready(function(){
     // console.log("RESTAURANT MODAL", $modal);
 
     var $restaurantNameField = $modal.find('#restaurantName')[0].value;
-    console.log("RESTAURANT NAME FIELD", $restaurantNameField);
+    // console.log("PHILZZZZZ", $restaurantNameField); //prints out the value of input from rest name
     var $restaurantUrl = $modal.find('#restaurant-web')[0].value;
-    console.log("RESTAURANT URL", $restaurantUrl);
+    // console.log("RESTAURANT URL", $restaurantUrl);
+
     // get data from modal fields
     var dataToPost = {
       name: $restaurantNameField,
@@ -137,9 +136,7 @@ $(document).ready(function(){
     var restaurantPostToServerUrl = '/api/neighborhood/'+ neighborhoodId + '/restaurants';
     $.post(restaurantPostToServerUrl, dataToPost, function(data) {
       console.log('received data from post to /restaurants:', data);
-    //   // clear form
-      // $restaurantNameField;
-      // $restaurantUrl;
+      // clear form
 
       // close modal
       $modal.modal('hide');
@@ -150,16 +147,23 @@ $(document).ready(function(){
           $('.neighborhood').append('<li>' + dataToPost.restaurantUrl + '</li>')
           console.log("DATA TO POST", dataToPost);
       });
-
         // fetchAndRenderNeighborhoodWithId(neighborhoodId);
-      });
-  //   }).error(function(err) {
-  //     console.log('post to /api/neighborhood/:neighborhoodId/restaurants resulted in error', err);
-  // });
-  // $('#restaurants').on('click', '.district-name', handleNavigationClick);
-
-  //when neighborhood is clicked from drop down menu
-  // function handleNavigationClick(e){
-  //
+    });
   };
+
+// modal for Adding A Slurp 
+
+  function handleAddTip(e){
+    console.log("CLICKED TO ADD A SLURRRRRP!");
+    e.preventDefault();
+
+    var $modal = $('#slurpModal');
+    console.log("SLUR[POIADFS JSADFL; JS;LKFJ]", $modal);
+
+    var $slurp = $modal.find('#slurpId')
+    $slurp.modal();
+  }
+
+
+
 });
