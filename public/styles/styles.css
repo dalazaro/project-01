@@ -1,9 +1,9 @@
 body {
-  color: white;
   width: 90%;
   margin: 0 auto;
   background-image: url('/images/slurpWood.jpg');
-  background-size: cover;
+  background-position: center;
+  background-size: 100%;
 }
 
 .modal {
@@ -17,28 +17,18 @@ header {
   background-position: center;
   background-attachment: scroll;
   height: 100%;
+  background-color: #FFFFFF;
 }
 
 .neighborhood-title {
   color: #FFB63E;
-  background-image: url("/images/embarcadero-fidi.jpg");
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-clip: padding-box;
 }
 
 .main-title {
   text-align: center;
-  text-shadow:
-		-1.5px -1.5px 0 #000,
-		1.5px -1.5px 0 #000,
-		-1.5px 1.5px 0 #000,
-		1.5px 1.5px 0 #000;
-  font-family: 'Oswald', sans-serif;
   font-size: 30px;
   margin: 0;
   padding: 20px 0 100px 0;
-  opacity: 0.9;
 }
 
 header h1 {
@@ -48,26 +38,36 @@ header h1 {
   font-weight: 900;
   margin: auto;
   text-transform: uppercase;
+  text-shadow:
+    -1.5px -1.5px 0 #000,
+    1.5px -1.5px 0 #000,
+    -1.5px 1.5px 0 #000,
+    1.5px 1.5px 0 #000;
 }
 
 header h2 {
+  font-family: 'Oswald', sans-serif;
   margin: auto;
   padding: 10px;
   font-weight: 700;
   letter-spacing: 0.05em;
+  text-shadow:
+    -1.5px -1.5px 0 #000,
+    1.5px -1.5px 0 #000,
+    -1.5px 1.5px 0 #000,
+    1.5px 1.5px 0 #000;
 }
 
 main {
   display: inline-block;
-  margin: 10px auto;
+  margin: 20px auto;
 }
 
 .nav {
   height: 100%;
   padding: 10px;
-  margin: 10px 0;
+  margin: 10px auto;
   text-align: center;
-  opacity: 0.8;
 }
 
 #select-neighborhood {
@@ -76,13 +76,13 @@ main {
 }
 
 nav {
+  background-color: white;
+  opacity: 0.9;
   text-align: center;
-  font-size: 16px;
-}
-
-.nav-neighborhoods {
-  margin: 10px auto;
-  width: 90%;
+  font-size: 18px;
+  font-weight: 900;
+  width: 100%;
+  padding: 15px 10px;
 }
 
 .nav-neighborhoods li {
@@ -91,7 +91,7 @@ nav {
   display: inline;
   list-style: none;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 900;
   letter-spacing: 0.05em;
 }
 
@@ -112,6 +112,7 @@ select#restaurants {
 section.neighborhood {
   padding: 20px 30px;
   opacity: 0.9;
+  background-color: #FFFFFF;
 }
 
 .neighborhood-box h3 {
@@ -125,6 +126,7 @@ section.neighborhood {
   margin: 0 0 15px 0;
   padding: 0;
   letter-spacing: 0.05em;
+  color: #3e75a7;
 }
 
 .neighborhood-img-div {
@@ -140,6 +142,7 @@ section.neighborhood {
 .neighborhood-img {
   height: auto;
   width: 100%;
+  border: 1px solid #FFFFFF;
 }
 
 .restaurant-info {
@@ -162,20 +165,22 @@ button.add-tip {
 
 footer {
   text-align: center;
-  opacity: 0.8;
+  opacity: 0.9;
   margin: 0;
   padding: 0;
   width: 100%;
   display: inline-block;
   font-size: 12px;
+  background-color: #FFFFFF;
 }
 
-footer h6 {
+footer h5 {
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 0.05em;
+  color: #3e75a7;
 }
 
 div.footer-div {
-  padding: 30px;
+  padding: 15px;
 }
