@@ -164,20 +164,23 @@ $(document).ready(function(){
           console.log("DATA TO POST", dataToPost);
       });
         // fetchAndRenderNeighborhoodWithId(neighborhoodId);
-    });
+      });
+  //   }).error(function(err) {
+  //     console.log('post to /api/neighborhood/:neighborhoodId/restaurants resulted in error', err);
+  // });
+
   };
 
-// modal for Adding A Slurp
 
   function handleAddTip(e){
     console.log("CLICKED TO ADD A SLURRRRRP!");
     e.preventDefault();
 
     var $modal = $('#slurpModal');
-    console.log("SLUR[POIADFS JSADFL; JS;LKFJ]", $modal);
+    console.log("SLURPOIADFS JSADFL; JS;LKFJ]", $modal);
 
     var $slurp = $modal.find('#slurpId')
-    $slurp.modal();
+    // $('.add-tip').modal();
   }
 
 
