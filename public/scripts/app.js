@@ -69,25 +69,6 @@ $(document).ready(function(){
     }
   // });
 
-  function renderRestaurant(json) {
-    var neighborhood = json;
-
-      // for each location, create a list item and marker
-        //List neighborhood info
-        var name = json.name;
-        var wikiUrl = json.wikiUrl;
-        var restaurants = json.restaurants;
-        var neighborhoodId = json._id;
-
-
-      $('.add-restaurant').on('click', handleAddRestaurant);
-      $('#saveRestaurant').on('click', handleNewRestaurantSubmit);
-      // $('.add-tip').on('click', handleAddTip)
-    }
-  // });
-
-
-
   function handleAddRestaurant(e){
     console.log("add-restaurant clicked!", $('.add-restaurant'));
     var closestNei = $(this).closest('.neighborhood-box')[0];
