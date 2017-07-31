@@ -72,6 +72,7 @@ $(document).ready(function(){
     }
   // });
 
+
   function handleAddRestaurant(e){
     console.log("add-restaurant clicked!", $('.add-restaurant'));
     var closestNei = $(this).closest('.neighborhood-box')[0];
