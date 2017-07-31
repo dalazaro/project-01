@@ -33,6 +33,8 @@ $(document).ready(function(){
             </div>
             <button type="button" class="btn btn-primary add-restaurant" name="">Add ${name} Restaurant</button>
             <div class="restaurant-info">
+
+              </div>
             </div>
           </div>
           <hr>`
@@ -49,21 +51,12 @@ $(document).ready(function(){
             <ul class="restaurant-tip-render">
             </ul>
             <button type="button" class="btn btn-warning add-tip shake-chunk" name="">Add Slurp for ${restaurant.name}</button>
-          $(`#${neighborhoodId} .restaurant-info`).append(`
-            <div class="restaurant-box" id="${restaurantId}">
-              <a href="${restaurant.url}"><h3>${restaurant.name}</h3></a>
-              <div class="restaurant-tips">
-                <h4><b>Recommended Slurps:</b></h5>
-                <ul class="restaurant-tip-render">
-                </ul>
-                <button type="button" class="btn btn-warning add-tip" name="">Add Slurp!</button>
-              </div>
             </div>`
           )
 
           restaurant.tips.forEach(function(tip) {
             $(`#${restaurantId} .restaurant-tip-render`).append(
-              `<li><i>"${tip}"</i></li>`
+              `<li>${tip}</li>`
             )
           })
         });
@@ -86,6 +79,30 @@ $(document).ready(function(){
         var wikiUrl = json.wikiUrl;
         var restaurants = json.restaurants;
         var neighborhoodId = json._id;
+
+        $('.neighborhood').append(
+          `<div class="neighborhood-box" id="${neighborhoodId}">
+            <div class="neighborhood-title">
+              <h2 id="neighborhood-title">${name}</h2>
+            </div>
+            <div class="neighborhood-img-div">
+              <a href="${wikiUrl}" target="blank"><img class="neighborhood-img" src="/images/embarcadero-fidi.jpg" alt="SF"></a>
+            </div>
+            <button type="button" class="btn btn-primary add-restaurant" name="">Add ${name} Restaurant</button>
+            <div class="restaurant-info">
+              <a href="${json.restaurants.url}"><h3>${json.restaurants.name}</h3></a>
+              <div class="restaurant-tips">
+              <h4><b>Recommended Slurps:</b></h5>
+              <ul class="restaurant-tip-render">
+              <li>${json.restaurants[0].tips[0]}</li>
+              <li>${json.restaurants[0].tips[1]}</li>
+              </ul>
+              <button type="button" class="btn btn-warning add-tip" name="">Add Slurp for ${json.restaurants[0].name}</button>
+              </div>
+            </div>
+          </div>
+          <hr>`
+        );
 
 
       $('.add-restaurant').on('click', handleAddRestaurant);
