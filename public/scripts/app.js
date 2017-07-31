@@ -43,20 +43,22 @@ $(document).ready(function(){
         restaurants.forEach(function(restaurant) {
           var restaurantId = restaurant._id;
 
-          $(`#${neighborhoodId} .restaurant-info`).append(
-            `<div id="${restaurantId}">
-            <a href="${restaurant.url}"><h3>${restaurant.name}</h3></a>
-            <div class="restaurant-tips">
-            <h4><b>Recommended Slurps:</b></h5>
-            <ul class="restaurant-tip-render">
-            </ul>
-            <button type="button" class="btn btn-warning add-tip shake-chunk" name="">Add Slurp for ${restaurant.name}</button>
+          $(`#${neighborhoodId} .restaurant-info`).append(`
+            <div class="restaurant-box" id="${restaurantId}">
+              <a href="${restaurant.url}"><h3>${restaurant.name}</h3></a>
+              <div class="restaurant-tips">
+                <h4><b>Recommended Slurps:</b></h5>
+                <ul class="restaurant-tip-render">
+
+                </ul>
+              </div>
+              <button type="button" class="btn btn-warning add-tip shake-chunk" name="">Add Slurp!</button>
             </div>`
           )
 
           restaurant.tips.forEach(function(tip) {
             $(`#${restaurantId} .restaurant-tip-render`).append(
-              `<li>${tip}</li>`
+              `<li><i>"${tip}"</i></li>`
             )
           })
         });
