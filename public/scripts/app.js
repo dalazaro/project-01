@@ -50,7 +50,7 @@ $(document).ready(function(){
             <h4><b>Recommended Slurps:</b></h5>
             <ul class="restaurant-tip-render">
             </ul>
-            <button type="button" class="btn btn-warning add-tip" name="">Add Slurp for ${restaurant.name}</button>
+            <button type="button" class="btn btn-warning add-tip shake-chunk" name="">Add Slurp for ${restaurant.name}</button>
             </div>`
           )
 
