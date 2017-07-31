@@ -55,7 +55,7 @@ $(document).ready(function(){
 
           restaurant.tips.forEach(function(tip) {
             $(`#${restaurantId} .restaurant-tip-render`).append(
-              `<li>${tip}</li>`
+              `<li><i>"${tip}"</i></li>`
             )
           })
         });
