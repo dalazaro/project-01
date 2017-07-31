@@ -62,16 +62,12 @@ $(document).ready(function(){
             )
           })
         });
-
       });
-
 
       $('.add-restaurant').on('click', handleAddRestaurant);
       $('#saveRestaurant').on('click', handleNewRestaurantSubmit);
       $('.add-tip').on('click', handleAddTip);
     }
-  // });
-
 
   function handleAddRestaurant(e){
     console.log("add-restaurant clicked!", $('.add-restaurant'));
@@ -91,12 +87,9 @@ $(document).ready(function(){
     e.preventDefault();
 
     var $modal = $('#restaurantModal');
-    // console.log("RESTAURANT MODAL", $modal);
 
     var $restaurantNameField = $modal.find('#restaurantName')[0].value;
-    // console.log("PHILZZZZZ", $restaurantNameField); //prints out the value of input from rest name
     var $restaurantUrl = $modal.find('#restaurant-web')[0].value;
-    // console.log("RESTAURANT URL", $restaurantUrl);
 
     // get data from modal fields
     var dataToPost = {
@@ -123,12 +116,7 @@ $(document).ready(function(){
           $('.neighborhood').append('<li>' + dataToPost.restaurantUrl + '</li>')
           console.log("DATA TO POST", dataToPost);
       });
-        // fetchAndRenderNeighborhoodWithId(neighborhoodId);
-      });
-  //   }).error(function(err) {
-  //     console.log('post to /api/neighborhood/:neighborhoodId/restaurants resulted in error', err);
-  // });
-
+    });
   };
 
 
@@ -140,7 +128,7 @@ $(document).ready(function(){
     console.log("SLURPOIADFS JSADFL; JS;LKFJ]", $modal);
 
     var $slurp = $modal.find('#slurpId')
-    // $('.add-tip').modal();
+    $('.add-tip').modal();
   }
 
 
