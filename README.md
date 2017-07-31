@@ -32,4 +32,4 @@ Users are able to input their own favorite ramen restaurants, as well as posting
 - We would like to incorporate password-protection for our users, perhaps logging in through their Yelp, Facebook, or Google account.
 - We would like to incorporate a voting system for favorite ramen restaurants. Users can upvote or downvote a restaurant in the directory, moving a restaurant higher/lower on its neighborhood list according to voter popularity.
 
-<img src="https://giphy.com/gifs/3o7bueVxlU3uSGP2b6">
+<img src="/public/images/ramen-loop.gif" height="300">
