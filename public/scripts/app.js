@@ -33,6 +33,8 @@ $(document).ready(function(){
             </div>
             <button type="button" class="btn btn-primary add-restaurant" name="">Add ${name} Restaurant</button>
             <div class="restaurant-info">
+
+              </div>
             </div>
           </div>
           <hr>`
@@ -41,21 +43,20 @@ $(document).ready(function(){
         restaurants.forEach(function(restaurant) {
           var restaurantId = restaurant._id;
 
-          $(`#${neighborhoodId} .restaurant-info`).append(`
-            <div class="restaurant-box" id="${restaurantId}">
-              <a href="${restaurant.url}"><h3>${restaurant.name}</h3></a>
-              <div class="restaurant-tips">
-                <h4><b>Recommended Slurps:</b></h5>
-                <ul class="restaurant-tip-render">
-                </ul>
-                <button type="button" class="btn btn-warning add-tip" name="">Add Slurp!</button>
-              </div>
+          $(`#${neighborhoodId} .restaurant-info`).append(
+            `<div id="${restaurantId}">
+            <a href="${restaurant.url}"><h3>${restaurant.name}</h3></a>
+            <div class="restaurant-tips">
+            <h4><b>Recommended Slurps:</b></h5>
+            <ul class="restaurant-tip-render">
+            </ul>
+            <button type="button" class="btn btn-warning add-tip shake-chunk" name="">Add Slurp for ${restaurant.name}</button>
             </div>`
           )
 
           restaurant.tips.forEach(function(tip) {
             $(`#${restaurantId} .restaurant-tip-render`).append(
-              `<li><i>"${tip}"</i></li>`
+              `<li>${tip}</li>`
             )
           })
         });
