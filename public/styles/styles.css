@@ -134,8 +134,7 @@ section.neighborhood {
 }
 
 .add-restaurant {
-  margin: auto;
-  margin: 5px 0;
+  margin: 5px auto;
   color: #000000;
 }
 
@@ -147,6 +146,14 @@ section.neighborhood {
 
 .restaurant-info {
   padding: 0;
+  margin: auto;
+}
+
+.restaurant-box {
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 20px;
+  margin: auto;
 }
 
 .restaurant-info h4 {
