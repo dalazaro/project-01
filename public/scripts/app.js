@@ -33,8 +33,6 @@ $(document).ready(function(){
             </div>
             <button type="button" class="btn btn-primary add-restaurant" name="">Add ${name} Restaurant</button>
             <div class="restaurant-info">
-
-              </div>
             </div>
           </div>
           <hr>`
@@ -49,7 +47,6 @@ $(document).ready(function(){
               <div class="restaurant-tips">
                 <h4><b>Recommended Slurps:</b></h5>
                 <ul class="restaurant-tip-render">
-
                 </ul>
               </div>
               <button type="button" class="btn btn-warning add-tip shake-chunk" name="">Add Slurp!</button>
@@ -62,6 +59,7 @@ $(document).ready(function(){
             )
           })
         });
+
       });
 
       $('.add-restaurant').on('click', handleAddRestaurant);
@@ -119,7 +117,6 @@ $(document).ready(function(){
     });
   };
 
-
   function handleAddTip(e){
     console.log("CLICKED TO ADD A SLURRRRRP!");
     e.preventDefault();
@@ -127,10 +124,8 @@ $(document).ready(function(){
     var $modal = $('#slurpModal');
     console.log("SLURPOIADFS JSADFL; JS;LKFJ]", $modal);
 
-    var $slurp = $modal.find('#slurpId')
-    $('.add-tip').modal();
+    var $slurp = $modal.find('#slurpId');
   }
-
 
 
 });
