@@ -15,8 +15,8 @@ $(document).ready(function(){
       neighborhood.forEach(function (json) {
         //List neighborhood info
         var name = json.name;
-        var wikiUrl = json.wikiUrl;
         var restaurants = json.restaurants;
+        var wikiUrl = json.wikiUrl;
         var neighborhoodId = json._id;
 
         $('.nav-neighborhoods').append(
@@ -33,21 +33,37 @@ $(document).ready(function(){
             </div>
             <button type="button" class="btn btn-primary add-restaurant" name="">Add ${name} Restaurant</button>
             <div class="restaurant-info">
-              <a href="${json.restaurants[0].url}"><h3>${json.restaurants[0].name}</h3></a>
-              <div class="restaurant-tips">
-              <h4><b>Recommended Slurps:</b></h5>
-              <ul class="restaurant-tip-render">
-              <li>${json.restaurants[0].tips[0]}</li>
-              <li>${json.restaurants[0].tips[1]}</li>
-              </ul>
-              <button type="button" class="btn btn-warning add-tip" name="">Add Slurp for ${json.restaurants[0].name}</button>
+
               </div>
             </div>
           </div>
           <hr>`
         );
 
+        restaurants.forEach(function(restaurant) {
+          var restaurantId = restaurant._id;
+
+          $(`#${neighborhoodId} .restaurant-info`).append(
+            `<div id="${restaurantId}">
+            <a href="${restaurant.url}"><h3>${restaurant.name}</h3></a>
+            <div class="restaurant-tips">
+            <h4><b>Recommended Slurps:</b></h5>
+            <ul class="restaurant-tip-render">
+            </ul>
+            <button type="button" class="btn btn-warning add-tip" name="">Add Slurp for ${restaurant.name}</button>
+            </div>`
+          )
+
+          restaurant.tips.forEach(function(tip) {
+            $(`#${restaurantId} .restaurant-tip-render`).append(
+              `<li>${tip}</li>`
+            )
+          })
+        });
+
       });
+
+
       $('.add-restaurant').on('click', handleAddRestaurant);
       $('#saveRestaurant').on('click', handleNewRestaurantSubmit);
       $('.add-tip').on('click', handleAddTip);
@@ -151,7 +167,7 @@ $(document).ready(function(){
     });
   };
 
-// modal for Adding A Slurp 
+// modal for Adding A Slurp
 
   function handleAddTip(e){
     console.log("CLICKED TO ADD A SLURRRRRP!");
