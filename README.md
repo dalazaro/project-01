@@ -1,9 +1,10 @@
-# SLURP SF
+# SLURP SF: Your crowdsourced ramen guide to San Francisco!
+
+<https://floating-reef-39049.herokuapp.com/>
+
 <img src="public/images/ramen.jpg">
 
-## Your crowdsourced ramen guide to San Francisco!
-
-The goal of this project is for users to discover new ramen restaurants in San Francisco. The restaurants are listed in our directory according to the neighborhoods they're located in.
+The goal of this project is for users to discover new ramen restaurants in San Francisco. Each restaurant is listed in our directory according to the neighborhood it's located in.
 
 Users are able to input their own favorite ramen restaurants. For any restaurant listing, users can also post any food recommendations they have to offer (we call these recommendations "slurps" :wink:).
 
