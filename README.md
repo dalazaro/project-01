@@ -5,7 +5,7 @@
 
 The goal of this project is for users to discover new ramen restaurants in San Francisco. The restaurants are listed in our directory according to the neighborhoods they're located in.
 
-Users are able to input their own favorite ramen restaurants, as well as posting to any existing restaurant listing any food recommendations they have to offer (we call these recommendations "slurps" :wink:).
+Users are able to input their own favorite ramen restaurants. For any restaurant listing, users can also post any food recommendations they have to offer (we call these recommendations "slurps" :wink:).
 
 <img src="/public/images/ramen-loop.gif" height="300">
 
