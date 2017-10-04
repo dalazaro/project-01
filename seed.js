@@ -7,6 +7,7 @@ var neighborhoodList = [];
 neighborhoodList.push({
   name: "Financial District",
   wikiUrl: "https://en.wikipedia.org/wiki/Financial_District,_San_Francisco",
+  image: "/images/embarcadero-fidi.jpg",
   restaurants: [
     {
      name: "Kirimachi Ramen",
@@ -24,6 +25,7 @@ neighborhoodList.push({
 neighborhoodList.push({
   name: "Japantown",
   wikiUrl: "https://en.wikipedia.org/wiki/Japantown,_San_Francisco",
+  image: "/images/japantown.jpg",
   restaurants: [
     {
       name: "Marufuku Ramen",
@@ -41,6 +43,7 @@ neighborhoodList.push({
 neighborhoodList.push({
   name: "Hayes Valley",
   wikiUrl: "https://en.wikipedia.org/wiki/Hayes_Valley,_San_Francisco",
+  image: "/images/hayesvalley.jpg",
   restaurants: [
     {
       name: "Nojo Ramen Tavern",
