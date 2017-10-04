@@ -44,18 +44,18 @@ $(document).ready(function(){
           $(`#${neighborhoodId} .restaurant-info`).append(`
             <div class="restaurant-box" id="${restaurantId}">
               <a href="${restaurant.url}"><h3>${restaurant.name}</h3></a>
-              <div class="restaurant-tips">
-                <h4><b>Recommended Slurps:</b></h5>
-                <ul class="restaurant-tip-render">
+              <div class="restaurant-slurps">
+                <h4><b>Recommended Slurps:</b></h4>
+                <ul class="restaurant-slurp-render">
                 </ul>
               </div>
-              <button type="button" class="btn btn-warning add-tip shake-chunk" name="">Add Slurp!</button>
+              <button type="button" class="btn btn-warning add-slurp" name="">Add Slurp!</button>
             </div>`
           )
 
-          restaurant.tips.forEach(function(tip) {
+          restaurant.slurps.forEach(function(slurp) {
             $(`#${restaurantId} .restaurant-tip-render`).append(
-              `<li><i>"${tip}"</i></li>`
+              `<li><i>"${slurp}"</i></li>`
             )
           })
         });
@@ -64,7 +64,7 @@ $(document).ready(function(){
 
       $('.add-restaurant').on('click', handleAddRestaurant);
       $('#saveRestaurant').on('click', handleNewRestaurantSubmit);
-      $('.add-tip').on('click', handleAddTip);
+      $('.add-slurp').on('click', handleAddSlurp);
     }
 
   function handleAddRestaurant(e){
@@ -86,15 +86,16 @@ $(document).ready(function(){
 
     var $modal = $('#restaurantModal');
 
-    var $restaurantNameField = $modal.find('#restaurantName')[0].value;
-    var $restaurantUrl = $modal.find('#restaurant-web')[0].value;
+    var $restaurantName = $modal.find('#restaurantName')[0].value;
+    var $restaurantUrl = $modal.find('#restaurantUrl')[0].value;
 
     // get data from modal fields
     var dataToPost = {
-      name: $restaurantNameField,
-      restaurantUrl: $restaurantUrl
+      name: $restaurantName,
+      url: $restaurantUrl
     };
     console.log("NAME", name);
+    console.log("URL", dataToPost.restaurantUrl);
 
     var neighborhoodId = $modal.data('neighborhood_id');
     console.log("MODAL-DATA", $modal.data());
@@ -103,21 +104,27 @@ $(document).ready(function(){
     var restaurantPostToServerUrl = '/api/neighborhood/'+ neighborhoodId + '/restaurants';
     $.post(restaurantPostToServerUrl, dataToPost, function(data) {
       console.log('received data from post to /restaurants:', data);
+      restaurantId = data._id
       // clear form
 
       // close modal
       $modal.modal('hide');
       $.get('api/neighborhood/' + neighborhoodId, function(data){
-          $('[id=' + neighborhoodId + ']').remove();
-          renderRestaurant(data); //data contains everything from the that neighborhood
-          $('.neighborhood').append('<li>' + dataToPost.name + '</li>');
-          $('.neighborhood').append('<li>' + dataToPost.restaurantUrl + '</li>')
-          console.log("DATA TO POST", dataToPost);
+          $(`#${neighborhoodId} .restaurant-info`).append(`
+            <div class="restaurant-box" id="${restaurantId}">
+              <a href="${dataToPost.restaurantUrl}"><h3>${dataToPost.name}</h3></a>
+              <div class="restaurant-slurps">
+                <h4><b>Recommended Slurps:</b></h4>
+                <ul class="restaurant-slurp-render">
+                </ul>
+              </div>
+              <button type="button" class="btn btn-warning add-slurp" name="">Add Slurp!</button>
+            </div>`);
       });
     });
   };
 
-  function handleAddTip(e){
+  function handleAddSlurp(e){
     console.log("CLICKED TO ADD A SLURRRRRP!");
     e.preventDefault();
 

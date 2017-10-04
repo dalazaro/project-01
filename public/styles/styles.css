@@ -161,16 +161,16 @@ section.neighborhood {
   margin: 10px 0 10px 0;
 }
 
-ul.restaurant-tip-render {
+ul.restaurant-slurp-render {
   padding: 0;
 }
 
-div.restaurant-tips li {
+div.restaurant-slurps li {
   list-style: none;
   padding: 0;
 }
 
-button.add-tip {
+button.add-slurp {
   padding: 0 5px;
   margin: 5px 0;
   color: #000000;
