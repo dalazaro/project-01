@@ -17,6 +17,7 @@ $(document).ready(function(){
         var name = json.name;
         var restaurants = json.restaurants;
         var wikiUrl = json.wikiUrl;
+        var image = json.image;
         var neighborhoodId = json._id;
 
         $('.nav-neighborhoods').append(
@@ -29,7 +30,7 @@ $(document).ready(function(){
               <h2>${name}</h2>
             </div>
             <div class="neighborhood-img-div">
-              <a href="${wikiUrl}" target="blank"><img class="neighborhood-img" src="/images/embarcadero-fidi.jpg" alt="SF"></a>
+              <a href="${wikiUrl}" target="blank"><img class="neighborhood-img" src="${image}" alt="SF"></a>
             </div>
             <button type="button" class="btn btn-primary add-restaurant" name="">Add ${name} Restaurant</button>
             <div class="restaurant-info">
@@ -54,7 +55,7 @@ $(document).ready(function(){
           )
 
           restaurant.slurps.forEach(function(slurp) {
-            $(`#${restaurantId} .restaurant-tip-render`).append(
+            $(`#${restaurantId} .restaurant-slurp-render`).append(
               `<li><i>"${slurp}"</i></li>`
             )
           })
@@ -65,6 +66,7 @@ $(document).ready(function(){
       $('.add-restaurant').on('click', handleAddRestaurant);
       $('#saveRestaurant').on('click', handleNewRestaurantSubmit);
       $('.add-slurp').on('click', handleAddSlurp);
+      $('#saveSlurp').on('click', handleNewSlurpSubmit);
     }
 
   function handleAddRestaurant(e){
@@ -79,7 +81,7 @@ $(document).ready(function(){
     $('#restaurantModal').modal();
   }
 
-  // when the song modal submit button is clicked:
+  // when the restaurant modal submit button is clicked:
   function handleNewRestaurantSubmit(e) {
     console.log("CLICKED");
     e.preventDefault();
@@ -125,14 +127,57 @@ $(document).ready(function(){
   };
 
   function handleAddSlurp(e){
-    console.log("CLICKED TO ADD A SLURRRRRP!");
+    console.log("add-slurp clicked", $('.add-slurp'));
+
+    var closestNei = $(this).closest('.neighborhood-box')[0];
+    var $neighEle = $(closestNei);
+    var currentNeighborhoodId = $neighEle.attr('id');
+
+    var closestRes = $(this).closest('.restaurant-box')[0];
+    var $restEle = $(closestRes);
+
+    console.log("CLOSEST restaurant", $restEle.attr('id'));
+
+    var currentRestaurantId = $restEle.attr('id');
+
+    console.log("THIS IS THE CURRENT RESTAURANT", currentRestaurantId);
+
+    $('#slurpModal').data('neighborhood_id', currentNeighborhoodId);
+    $('#slurpModal').data('restaurant_id', currentRestaurantId);
+    $('#slurpModal').modal();
+
+  }
+
+  // when the slurp modal submit button is clicked:
+  function handleNewSlurpSubmit(e) {
     e.preventDefault();
 
     var $modal = $('#slurpModal');
-    console.log("SLURPOIADFS JSADFL; JS;LKFJ]", $modal);
 
-    var $slurp = $modal.find('#slurpId');
-  }
+    var $newSlurp = $modal.find('#slurpId')[0].value;
+    console.log("new slurp", $newSlurp);
+
+    var dataToPost = {
+      slurps: $newSlurp,
+    };
+
+    var neighborhoodId = $modal.data('neighborhood_id');
+    var restaurantId = $modal.data('restaurant_id');
+    console.log("MODAL-DATA", $modal.data());
+
+    // POST to SERVER
+    var slurpPostToServerUrl = `/api/neighborhood/${neighborhoodId}/restaurants/${restaurantId}/slurps`;
+    $.post(slurpPostToServerUrl, dataToPost, function(data) {
+      console.log('received data', data);
+    });
+
+    //close modal
+    $modal.modal('hide');
+    $.get(`/api/neighborhood/${neighborhoodId}/restaurants/${restaurantId}`, function(data){
+        $(`#${restaurantId} .restaurant-slurp-render`).prepend(
+          `<li><i>"${$newSlurp}"</i></li>`);
+    });
+  };
 
 
 });

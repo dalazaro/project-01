@@ -6,6 +6,7 @@ var Restaurant = require('./restaurant');
 var NeighborhoodSchema = new Schema({
   name: String,
   wikiUrl: String,
+  image: String,
   restaurants: [Restaurant.schema]
 });
 
