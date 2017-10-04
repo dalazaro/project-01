@@ -17,6 +17,7 @@ $(document).ready(function(){
         var name = json.name;
         var restaurants = json.restaurants;
         var wikiUrl = json.wikiUrl;
+        var image = json.image;
         var neighborhoodId = json._id;
 
         $('.nav-neighborhoods').append(
@@ -29,7 +30,7 @@ $(document).ready(function(){
               <h2>${name}</h2>
             </div>
             <div class="neighborhood-img-div">
-              <a href="${wikiUrl}" target="blank"><img class="neighborhood-img" src="/images/embarcadero-fidi.jpg" alt="SF"></a>
+              <a href="${wikiUrl}" target="blank"><img class="neighborhood-img" src="${image}" alt="SF"></a>
             </div>
             <button type="button" class="btn btn-primary add-restaurant" name="">Add ${name} Restaurant</button>
             <div class="restaurant-info">
