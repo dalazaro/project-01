@@ -112,7 +112,7 @@ $(document).ready(function(){
       $.get('api/neighborhood/' + neighborhoodId, function(data){
           $(`#${neighborhoodId} .restaurant-info`).append(`
             <div class="restaurant-box" id="${restaurantId}">
-              <a href="${dataToPost.restaurantUrl}"><h3>${dataToPost.name}</h3></a>
+              <a href="${dataToPost.url}"><h3>${dataToPost.name}</h3></a>
               <div class="restaurant-slurps">
                 <h4><b>Recommended Slurps:</b></h4>
                 <ul class="restaurant-slurp-render">
