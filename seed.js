@@ -11,12 +11,12 @@ neighborhoodList.push({
     {
      name: "Kirimachi Ramen",
      url: "http://kirimachi.com",
-     tips: ["Love the Tsukemen Ramen!", "Try the Duck one!"]
+     slurps: ["Love the Tsukemen Ramen!", "Try the Duck one!"]
     },
     {
       name: "The Ramen Bar",
       url: "http://theramenbar.com",
-      tips: ["Tokyo Roast Chicken Ramen w/ egg!!"]
+      slurps: ["Tokyo Roast Chicken Ramen w/ egg!!"]
     }
   ]
 });
@@ -28,12 +28,12 @@ neighborhoodList.push({
     {
       name: "Marufuku Ramen",
       url: "http://marufukuramen.com",
-      tips: ["Chicken Karaage!", "Hakata style ramen"]
+      slurps: ["Chicken Karaage!", "Hakata style ramen"]
     },
     {
       name: "Hinodeya Ramen Bar",
       url: "http://sasala-group.com/hinodeya",
-      tips: ["Tori Paitan", "Black Sesame Icecream with granola!"]
+      slurps: ["Tori Paitan", "Black Sesame Icecream with granola!"]
     }
   ]
 });
@@ -45,12 +45,12 @@ neighborhoodList.push({
     {
       name: "Nojo Ramen Tavern",
       url: "https://nojosf.com",
-      tips: ["Spicy Chicken Soboro Tossed Noodles", "Chicken Paitan Soy Sauce Ramen"]
+      slurps: ["Spicy Chicken Soboro Tossed Noodles", "Chicken Paitan Soy Sauce Ramen"]
     },
     {
       name: "O-Toro Sushi",
       url: "http://otorosushi.com",
-      tips: ["Miso Ramen!", "Get sushi instead"]
+      slurps: ["Miso Ramen!", "Get sushi instead"]
     }
   ]
 });

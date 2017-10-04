@@ -19,8 +19,8 @@ function index(req, res) {
       {method: "POST", path: "/api/neighborhood/:id/restaurants", description: "Create a new restaurant within an id-specified neighborhood"},
       {method: "DELETE", path: "/api/neighborhood/:neighborhood_id/restaurants/:restaurant_id", description: "Destroy one id-specified restaurant in an id-specified neighborhood"},
 
-      // TIPS
-      {method: "POST", path: "/api/neighborhood/:neighborhood_id/restaurant/:restaurant_id/tips", description: "Create a new tip in an id-specified restaurant"}
+      // SLURPS
+      {method: "POST", path: "/api/neighborhood/:neighborhood_id/restaurant/:restaurant_id/slurps", description: "Create a new slurp in an id-specified restaurant"}
     ]
   })
 }
