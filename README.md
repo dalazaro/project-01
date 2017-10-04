@@ -1,6 +1,6 @@
 # SLURP SF: Your crowdsourced ramen guide to San Francisco!
 
-<https://floating-reef-39049.herokuapp.com/>
+Check out Slurp SF [here!](https://slurp-sf.herokuapp.com/)
 
 <img src="public/images/ramen.jpg">
 
